@@ -12,7 +12,7 @@ if (!defined("IN_ESOTALK")) exit;
 		<li>
 			<a href='<?php echo URL("attachment/".$attachment["attachmentId"]."_".$attachment["filename"]); ?>' target='_blank'>
 				<?php echo $attachment["filename"]; ?>
-			</a>
+            </a>
 		</li>
 		<?php endforeach; ?>
 	</ul>
