@@ -15,24 +15,41 @@
  *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  *   @author Marcel Lange <contact@marcel-lange.info>
- *   @package AttachmentsLightbox
+ *   @package Piwik
  *
  *   This file is part of esoTalk. Please see the included license file for usage information.
+ *
+ *   Displays the settings form for the piwik plugin.
  * */
+
 if (!defined("IN_ESOTALK")) exit;
 
+$form = $data["piwikSettingsForm"];
 ?>
-<div class='attachments-edit'>
-	<ul>
-		<?php foreach ($data["attachments"] as $attachment): ?>
-		<li id='attachment-<?php echo $attachment["attachmentId"]; ?>'>
-			<a href='<?php echo URL("attachment/remove/".$attachment["attachmentId"]."?token=".ET::$session->token); ?>' class='control-delete' data-id='<?php echo $attachment["attachmentId"]; ?>'><i class='icon-remove'></i></a>
-			<strong><?php echo $attachment["filename"]; ?></strong>
-		</li>
-		<?php endforeach; ?>
-	</ul>
+<?php echo $form->open(); ?>
 
-	<a class='attachments-button'><?php echo T("Attach a file"); ?></a>
+<div class='section'>
+
+<ul class='form'>
+
+<li>
+<label>Trackingcode</label>
+<?php echo $form->input("trackingcode", "textarea"); ?>
+<small><?php echo T("Enter the trackingcode generated over the piwik backend."); ?></small>
+</li>
+
+<li>
+<label>Image trackingcode</label>
+<?php echo $form->input("imagetrackingcode", "text"); ?>
+<small><?php echo T("If you want to use the imagetracking possibilities of piwik, just enter the imagetracking code here! <br /><strong>Attention:</strong> Will exclude js tracking code!!!"); ?></small>
+</li>
+
+</ul>
+
 </div>
 
-<div class='dropZone'><?php echo T("Drop files to upload"); ?></div>
+<div class='buttons'>
+<?php echo $form->saveButton("piwikSettingsSave"); ?>
+</div>
+
+<?php echo $form->close(); ?>
