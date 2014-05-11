@@ -1,9 +1,0 @@
-.DS_Store
-.buildpath
-.project
-.settings
-.htaccess
-cache/*
-config/*
-uploads/*
-robots.txt
